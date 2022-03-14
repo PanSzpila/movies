@@ -63,33 +63,36 @@ function Movies(props) {
         </thead>
         {
           <tbody>
-            {/*             {items["results"].map(
-              (
-                item //TODO: table
-              ) => (
-                <tr key={item.id}>
-                  <th scope="row">
-                    <Link
-                      to={`/Movies/${item.title
-                        .replace(/ /g, "-")
-                        .replace(/\//g, "-")}`}
-                      onClick={() => props.GetId(item.id)}
-                    >
-                      {item.title}
-                    </Link>
-                  </th>
-                  <td>
-                    <p>date of release</p>
-                  </td>
-                  <td>
-                    <p>genre</p>
-                  </td>
-                  <td>
-                    <p>rates</p>
-                  </td>
-                </tr>
-              )
-            )} */}
+            {items.length > 10
+              ? items["results"].map(
+                  (
+                    item //TODO: table
+                  ) => (
+                    <tr key={item.id}>
+                      <th scope="row">
+                        <Link
+                          to={`/Movies/${item.title
+                            .replace(/ /g, "-")
+                            .replace(/\//g, "-")}`}
+                          onClick={() => props.GetId(item.id)}
+                        >
+                          {item.title}
+                        </Link>
+                      </th>
+                      <td>
+                        <p>date of release</p>
+                      </td>
+                      <td>
+                        <p>genre</p>
+                      </td>
+                      <td>
+                        <p>rates</p>
+                        {/* TODO: problem: This reqires one reqest per every movie. One table with reqired info about all movies, exploits all requests to the day limit of api! */}
+                      </td>
+                    </tr>
+                  )
+                )
+              : "bug"}
           </tbody>
         }
       </table>
